@@ -1,0 +1,14 @@
+README.md
+setup.py
+src/schema_detector/__init__.py
+src/schema_detector/api.py
+src/schema_detector/detector.py
+src/schema_detector/models.py
+src/schema_detector/parser.py
+src/schema_detector/reporter.py
+src/schema_detector.egg-info/PKG-INFO
+src/schema_detector.egg-info/SOURCES.txt
+src/schema_detector.egg-info/dependency_links.txt
+src/schema_detector.egg-info/requires.txt
+src/schema_detector.egg-info/top_level.txt
+tests/test_schema_detector.py

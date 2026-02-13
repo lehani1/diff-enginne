@@ -1,0 +1,34 @@
+version: 0.0.0
+meta:
+  dataset_owner:
+    name: test
+  function: test
+dataset:
+  identifier:
+    datasetname: test
+    loadtype: batch
+    sourcesystem: test
+    sourcetablename: catalog.bronze.new_table
+    targettablename: catalog.silver.new_table
+    targetlayer: silver
+    targetmode: overwrite
+    archive: false
+    datainjection:
+      ODS_flag: true
+      fileformat: csv
+      ODS_type: delta
+      batchIdentifier: BatchID
+      mergeSchema: true
+      src_schema_enforcement: true
+  source:
+    columns:
+    - name: Column_1
+      dtype: StringType
+    - name: Column_2
+      dtype: DecimalType
+  target:
+    columns:
+    - name: Column_1
+      standardname: Column_1
+    - name: Column_2
+      standardname: Column_2

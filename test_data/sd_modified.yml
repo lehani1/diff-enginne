@@ -1,0 +1,62 @@
+version: 0.0.0
+meta:
+  dataset_owner:
+    name: fdsfs
+  function: abc
+  project_name:
+    name: sample
+    product_owner: John doe
+dataset:
+  identifier:
+    datasetname: sample
+    loadtype: batch
+    sourcesystem: Sample_System
+    sourcelayer:
+    ingestion_src_path: abfss://{abc}@datalake.dfs.core.windows.net/path/to/file.csv
+    ODS_table: catalog.bronze.bronze_table
+    sourcetablename: catalog.bronze.bronze_table
+    targettablename: catalog.bronze.silver_table
+    targetlayer: silver
+    targetmode: overwrite
+    archive: false
+    datainjection:
+      ODS_flag: true
+      fileformat: csv
+      ODS_type: delta
+      batchIdentifier: BatchID
+      mergeSchema: true
+      src_schema_enforcement: true
+
+    dataquality:
+      unique:
+        warning:
+        - Column_1
+        - Column_2
+  source:
+    options:
+    - sep: "||"
+      escape: ''
+      quote: ''
+      header: true
+      dataFormat: yyyy.MM.dd
+      timestampFormat: yyyy.MM.dd HH:mm:ss
+      multiLine: true
+    columns:
+    - name: Column_1
+      dtype: StringType
+    - name: Column_2
+      dtype: DecimalType
+    - name: Column_3
+      dtype: IntegerType
+    - name: Column_4
+      dtype: StringType
+  target:
+    columns:
+    - name: Column_1
+      standardname: Column_1
+    - name: Column_2
+      standardname: Column_2
+    - name: Column_3
+      standardname: Column_3_New
+    - name: Column_4
+      standardname: Column_4
